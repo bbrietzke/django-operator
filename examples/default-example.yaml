@@ -1,0 +1,33 @@
+apiVersion: faultycloud.io/v1alpha1
+kind: DjangoApp
+metadata:
+  name: my-blog-app
+  namespace: default
+spec:
+  deployment:
+    image: myregistry/django-blog:v1.0.0
+    port: 8000
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "128Mi"
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
+  
+  ingress:
+    ingressClassName: nginx
+    host: blog.example.com
+  
+  autoscale:
+    min: 2
+    max: 10
+    targetCPUUtilizationPercentage: 70
+  
+  env:
+    - name: DJANGO_SETTINGS_MODULE
+      value: "myapp.settings.production"
+    - name: DEBUG
+      value: "false"
+    - name: ALLOWED_HOSTS
+      value: "blog.example.com"

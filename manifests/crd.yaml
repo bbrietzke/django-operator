@@ -1,0 +1,205 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  # name must be in the form: <plural>.<group>
+  name: djangoapps.faultycloud.io
+spec:
+  # group name to use for REST API: /apis/<group>/<version>
+  group: faultycloud.io
+  
+  # list of versions supported by this CustomResourceDefinition
+  versions:
+    - name: v1alpha1
+      # Each version can be enabled/disabled by Served flag
+      served: true
+      # One and only one version must be marked as the storage version
+      storage: true
+      
+      # OpenAPI v3 schema for validation
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              required:
+                - deployment
+                - ingress
+                - autoscale
+              properties:
+                # Deployment configuration
+                deployment:
+                  type: object
+                  required:
+                    - image
+                    - port
+                    - resources
+                  properties:
+                    image:
+                      type: string
+                      description: "Container image for the Django application"
+                      minLength: 1
+                      # Basic validation for image format (registry/repo:tag)
+                      pattern: '^[a-zA-Z0-9.\-_/]+:[a-zA-Z0-9.\-_]+$'
+                    
+                    port:
+                      type: integer
+                      description: "Port that Django application listens on"
+                      minimum: 1
+                      maximum: 65535
+                    
+                    resources:
+                      type: object
+                      required:
+                        - requests
+                      properties:
+                        requests:
+                          type: object
+                          required:
+                            - cpu
+                            - memory
+                          properties:
+                            cpu:
+                              type: string
+                              description: "CPU request (e.g., '100m', '0.5')"
+                              pattern: '^[0-9]+m?$|^[0-9]+\.[0-9]+$'
+                            memory:
+                              type: string
+                              description: "Memory request (e.g., '128Mi', '1Gi')"
+                              pattern: '^[0-9]+(Mi|Gi|M|G)$'
+                        
+                        limits:
+                          type: object
+                          properties:
+                            cpu:
+                              type: string
+                              description: "CPU limit (e.g., '500m', '1')"
+                              pattern: '^[0-9]+m?$|^[0-9]+\.[0-9]+$'
+                            memory:
+                              type: string
+                              description: "Memory limit (e.g., '512Mi', '2Gi')"
+                              pattern: '^[0-9]+(Mi|Gi|M|G)$'
+                
+                # Ingress configuration
+                ingress:
+                  type: object
+                  required:
+                    - ingressClassName
+                    - host
+                  properties:
+                    ingressClassName:
+                      type: string
+                      description: "Ingress class to use (e.g., 'nginx', 'traefik')"
+                      minLength: 1
+                    
+                    host:
+                      type: string
+                      description: "Hostname for the ingress (e.g., 'myapp.example.com')"
+                      minLength: 1
+                      # Basic hostname validation
+                      pattern: '^[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*$'
+                
+                # Autoscaling configuration
+                autoscale:
+                  type: object
+                  required:
+                    - targetCPUUtilizationPercentage
+                  properties:
+                    min:
+                      type: integer
+                      description: "Minimum number of replicas"
+                      minimum: 1
+                      default: 1
+                    
+                    max:
+                      type: integer
+                      description: "Maximum number of replicas"
+                      minimum: 1
+                      default: 2
+                    
+                    targetCPUUtilizationPercentage:
+                      type: integer
+                      description: "Target CPU utilization percentage for autoscaling"
+                      minimum: 1
+                      maximum: 100
+                      default: 70
+                
+                # Environment variables (optional)
+                env:
+                  type: array
+                  description: "Environment variables for the Django application"
+                  items:
+                    type: object
+                    required:
+                      - name
+                      - value
+                    properties:
+                      name:
+                        type: string
+                        description: "Environment variable name"
+                        minLength: 1
+                      value:
+                        type: string
+                        description: "Environment variable value"
+            
+            # Status subresource for the operator to report status
+            status:
+              type: object
+              properties:
+                conditions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      status:
+                        type: string
+                      lastTransitionTime:
+                        type: string
+                        format: date-time
+                      reason:
+                        type: string
+                      message:
+                        type: string
+      
+      # Subresources for the custom resource
+      subresources:
+        # Status enables the status subresource
+        status: {}
+      
+      # Additional printer columns to show with kubectl get
+      additionalPrinterColumns:
+        - name: Image
+          type: string
+          description: The Django application image
+          jsonPath: .spec.deployment.image
+        - name: Host
+          type: string
+          description: The ingress hostname
+          jsonPath: .spec.ingress.host
+        - name: Min
+          type: integer
+          description: Minimum replicas
+          jsonPath: .spec.autoscale.min
+        - name: Max
+          type: integer
+          description: Maximum replicas
+          jsonPath: .spec.autoscale.max
+        - name: Age
+          type: date
+          jsonPath: .metadata.creationTimestamp
+  
+  # either Namespaced or Cluster
+  scope: Namespaced
+  
+  names:
+    # plural name to be used in the URL: /apis/<group>/<version>/<plural>
+    plural: djangoapps
+    # singular name to be used as an alias on the CLI and for display
+    singular: djangoapp
+    # kind is normally the CamelCased singular type
+    kind: DjangoApp
+    # shortNames allow shorter string to match your resource on the CLI
+    shortNames:
+      - dja
