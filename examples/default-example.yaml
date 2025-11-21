@@ -21,7 +21,7 @@ spec:
   
   autoscale:
     min: 2
-    max: 10
+    max: 5
     targetCPUUtilizationPercentage: 70
   
   env:
