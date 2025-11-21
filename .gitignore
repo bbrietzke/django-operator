@@ -1,109 +1,7 @@
+# Created by https://www.toptal.com/developers/gitignore/api/python,pycharm,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=python,pycharm,visualstudiocode
 
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
--- INSERT --
-.coverage
-.coverage.*
-# CMake
-cmake-build-*/
-
-# Mongo Explorer plugin
-.idea/**/mongoSettings.xml
-
-# File-based project format
-*.iws
-
-# IntelliJ
-out/
-
-# mpeltonen/sbt-idea plugin
-.idea_modules/
-
-# JIRA plugin
-atlassian-ide-plugin.xml
-
-# Cursive Clojure plugin
-.idea/replstate.xml
-
-# SonarLint plugin
-.idea/sonarlint/
-
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
-
-# Editor-based Rest Client
-.idea/httpRequests
-
-# Android studio 3.1+ serialized cache file
-.idea/caches/build_file_checksums.ser
-
-### PyCharm+all Patch ###
-# Ignore everything but code style settings and run configurations
-# that are supposed to be shared within teams.
-
-.idea/*
-
-!.idea/codeStyles
-!.idea/runConfigurations
-
-### Python ###
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
--- INSERT --
-# Created by https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,pycharm+all
-# Edit at https://www.toptal.com/developers/gitignore?templates=python,visualstudiocode,pycharm+all
-
-### PyCharm+all ###
+### PyCharm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
@@ -149,9 +47,6 @@ __pycache__/
 # CMake
 cmake-build-*/
 
--- INSERT --
-cmake-build-*/
-
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
 
@@ -185,21 +80,43 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-### PyCharm+all Patch ###
-# Ignore everything but code style settings and run configurations
-# that are supposed to be shared within teams.
+### PyCharm Patch ###
+# Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
-.idea/*
+# *.iml
+# modules.xml
+# .idea/misc.xml
+# *.ipr
 
-!.idea/codeStyles
-!.idea/runConfigurations
+# Sonarlint plugin
+# https://plugins.jetbrains.com/plugin/7973-sonarlint
+.idea/**/sonarlint/
+
+# SonarQube Plugin
+# https://plugins.jetbrains.com/plugin/7238-sonarqube-community-plugin
+.idea/**/sonarIssues.xml
+
+# Markdown Navigator plugin
+# https://plugins.jetbrains.com/plugin/7896-markdown-navigator-enhanced
+.idea/**/markdown-navigator.xml
+.idea/**/markdown-navigator-enh.xml
+.idea/**/markdown-navigator/
+
+# Cache file creation bug
+# See https://youtrack.jetbrains.com/issue/JBR-2257
+.idea/$CACHE_FILE$
+
+# CodeStream plugin
+# https://plugins.jetbrains.com/plugin/12206-codestream
+.idea/codestream.xml
+
+# Azure Toolkit for IntelliJ plugin
+# https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
+.idea/**/azureSettings.xml
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
-*$py.class
--- INSERT --
 *.py[cod]
 *$py.class
 
@@ -249,8 +166,6 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
-.hypothesis/
-.pytest_cache/
 cover/
 
 # Translations
@@ -298,471 +213,96 @@ ipython_config.py
 
 # poetry
 #   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-# poetry
-Last login: Thu Nov 20 06:45:57 on ttys003
-bbrietzke@alcmene ~ % cd Development/django-operator
-bbrietzke@alcmene django-operator % python3 --version
-Python 3.11.13 (413c9b7f57f5, Jul 03 2025, 18:04:06)
-[PyPy 7.3.20 with GCC Apple LLVM 16.0.0 (clang-1600.0.26.6)]
-bbrietzke@alcmene django-operator % python3 -m venv .venv
-bbrietzke@alcmene django-operator % touch .gitignore
-bbrietzke@alcmene django-operator % vi .gitignore
-bbrietzke@alcmene django-operator % source .venv/bin/actiate
-source: no such file or directory: .venv/bin/actiate
-bbrietzke@alcmene django-operator % source .venv/bin/activate
-(.venv) bbrietzke@alcmene django-operator % git stats
-git: 'stats' is not a git command. See 'git --help'.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+#poetry.lock
 
-The most similar command is
-	status
-(.venv) bbrietzke@alcmene django-operator % git init .
-Initialized empty Git repository in /Users/bbrietzke/Development/django-operator/.git/
-(.venv) bbrietzke@alcmene django-operator % git commit -am "Initial Import."
-On branch main
+# pdm
+#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+#pdm.lock
+#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
+#   in version control.
+#   https://pdm.fming.dev/#use-with-ide
+.pdm.toml
 
-Initial commit
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+__pypackages__/
 
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-	.gitignore
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
 
-nothing added to commit but untracked files present (use "git add" to track)
-(.venv) bbrietzke@alcmene django-operator % git add .
-(.venv) bbrietzke@alcmene django-operator % git commit -am "Initial Import."
-[main (root-commit) 58806fb] Initial Import.
- 1 file changed, 283 insertions(+)
- create mode 100644 .gitignore
-(.venv) bbrietzke@alcmene django-operator % git checkout -b walk-through
-Switched to a new branch 'walk-through'
-(.venv) bbrietzke@alcmene django-operator % mkdir -p {manifests,lib,examples}
-(.venv) bbrietzke@alcmene django-operator % touch lib/__init__.py
-(.venv) bbrietzke@alcmene django-operator % touch manifests/crd.yaml
-(.venv) bbrietzke@alcmene django-operator % touch manifests/rbac.yaml
-(.venv) bbrietzke@alcmene django-operator % touch main.py
-(.venv) bbrietzke@alcmene django-operator % rm main.py
-(.venv) bbrietzke@alcmene django-operator % git status
-On branch walk-through
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-	manifests/
+# SageMath parsed files
+*.sage.py
 
-nothing added to commit but untracked files present (use "git add" to track)
-(.venv) bbrietzke@alcmene django-operator % git add .
-(.venv) bbrietzke@alcmene django-operator % git status
-On branch walk-through
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-	new file:   manifests/crd.yaml
-	new file:   manifests/rbac.yaml
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-(.venv) bbrietzke@alcmene django-operator % ls lib
-__init__.py
-(.venv) bbrietzke@alcmene django-operator % git add .
-(.venv) bbrietzke@alcmene django-operator % git add lib/__init__.py
-The following paths are ignored by one of your .gitignore files:
-lib
-hint: Use -f if you really want to add them.
-hint: Disable this message with "git config set advice.addIgnoredFile false"
-(.venv) bbrietzke@alcmene django-operator % mv lib helpers
-(.venv) bbrietzke@alcmene django-operator % git add .
-(.venv) bbrietzke@alcmene django-operator % git status
-On branch walk-through
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-	new file:   helpers/__init__.py
-	new file:   manifests/crd.yaml
-	new file:   manifests/rbac.yaml
+# Spyder project settings
+.spyderproject
+.spyproject
 
-(.venv) bbrietzke@alcmene django-operator % git commit -am "Adding some empty files."
-[walk-through 88e1c0b] Adding some empty files.
- 3 files changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 helpers/__init__.py
- create mode 100644 manifests/crd.yaml
- create mode 100644 manifests/rbac.yaml
-(.venv) bbrietzke@alcmene django-operator % pip
+# Rope project settings
+.ropeproject
 
-Usage:
-  pip <command> [options]
+# mkdocs documentation
+/site
 
-Commands:
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
 
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
--- INSERT --
-kopf
-  install                     Install packages.
-  download                    Download packages.
-  uninstall                   Uninstall packages.
-  freeze                      Output installed packages in requirements format.
-  inspect                     Inspect the python environment.
-  list                        List installed packages.
-  show                        Show information about installed packages.
-  check                       Verify installed packages have compatible dependencies.
-  config                      Manage local and global configuration.
-  search                      Search PyPI for packages.
-  cache                       Inspect and manage pip's wheel cache.
-  index                       Inspect information available from package indexes.
-  wheel                       Build wheels from your requirements.
-  hash                        Compute hashes of package archives.
-  completion                  A helper command used for command completion.
-  debug                       Show information useful for debugging.
-  help                        Show help for commands.
+# Pyre type checker
+.pyre/
 
-General Options:
-  -h, --help                  Show help.
-  --debug                     Let unhandled exceptions propagate outside the main subroutine, instead of logging them to stderr.
-  --isolated                  Run pip in an isolated mode, ignoring environment variables and user configuration.
-  --require-virtualenv        Allow pip to only run in a virtual environment; exit with an error otherwise.
-  --python <python>           Run pip with the specified Python interpreter.
-  -v, --verbose               Give more output. Option is additive, and can be used up to 3 times.
-  -V, --version               Show version and exit.
-  -q, --quiet                 Give less output. Option is additive, and can be used up to 3 times (corresponding to WARNING, ERROR, and CRITICAL logging levels).
-  --log <path>                Path to a verbose appending log.
-  --no-input                  Disable prompting for input.
-  --keyring-provider <keyring_provider>
-                              Enable the credential lookup via the keyring library if user input is allowed. Specify which mechanism to use [disabled, import, subprocess]. (default: disabled)
-  --proxy <proxy>             Specify a proxy in the form scheme://[user:passwd@]proxy.server:port.
-  --retries <retries>         Maximum number of retries each connection should attempt (default 5 times).
-  --timeout <sec>             Set the socket timeout (default 15 seconds).
-  --exists-action <action>    Default action when a path already exists: (s)witch, (i)gnore, (w)ipe, (b)ackup, (a)bort.
-  --trusted-host <hostname>   Mark this host or host:port pair as trusted, even though it does not have valid or any HTTPS.
-  --cert <path>               Path to PEM-encoded CA certificate bundle. If provided, overrides the default. See 'SSL Certificate Verification' in pip documentation for more information.
-  --client-cert <path>        Path to SSL client certificate, a single file containing the private key and the certificate in PEM format.
-  --cache-dir <dir>           Store the cache data in <dir>.
-  --no-cache-dir              Disable the cache.
-  --disable-pip-version-check
-                              Don't periodically check PyPI to determine whether a new version of pip is available for download. Implied with --no-index.
-  --no-color                  Suppress colored output.
-  --no-python-version-warning
-                              Silence deprecation warnings for upcoming unsupported Pythons.
-  --use-feature <feature>     Enable new functionality, that may be backward incompatible.
-  --use-deprecated <feature>  Enable deprecated functionality, that will be removed in the future.
-(.venv) bbrietzke@alcmene django-operator % touch requirements.txt
-(.venv) bbrietzke@alcmene django-operator % vi requirements.txt
-(.venv) bbrietzke@alcmene django-operator % pip install requirements.txt
-ERROR: Could not find a version that satisfies the requirement requirements.txt (from versions: none)
-HINT: You are attempting to install a package literally named "requirements.txt" (which cannot exist). Consider using the '-r' flag to install the packages listed in requirements.txt
-ERROR: No matching distribution found for requirements.txt
+# pytype static type analyzer
+.pytype/
 
-[notice] A new release of pip is available: 24.0 -> 25.3
-[notice] To update, run: pip install --upgrade pip
-(.venv) bbrietzke@alcmene django-operator % pip install --upgrade pip
-Requirement already satisfied: pip in ./.venv/lib/pypy3.11/site-packages (24.0)
-Collecting pip
-  Using cached pip-25.3-py3-none-any.whl.metadata (4.7 kB)
-Using cached pip-25.3-py3-none-any.whl (1.8 MB)
-Installing collected packages: pip
-  Attempting uninstall: pip
-    Found existing installation: pip 24.0
-    Uninstalling pip-24.0:
-      Successfully uninstalled pip-24.0
-Successfully installed pip-25.3
-(.venv) bbrietzke@alcmene django-operator % pip install -r requirements.txt
-Collecting kopf (from -r requirements.txt (line 1))
-  Using cached kopf-1.38.0-py3-none-any.whl.metadata (10.0 kB)
-Collecting kubernetes (from -r requirements.txt (line 2))
-  Using cached kubernetes-34.1.0-py2.py3-none-any.whl.metadata (1.7 kB)
-Collecting pyyaml (from -r requirements.txt (line 3))
-  Using cached pyyaml-6.0.3-pp311-pypy311_pp73-macosx_11_0_arm64.whl
-Collecting python-json-logger (from kopf->-r requirements.txt (line 1))
-  Using cached python_json_logger-4.0.0-py3-none-any.whl.metadata (4.0 kB)
-Collecting iso8601 (from kopf->-r requirements.txt (line 1))
-  Using cached iso8601-2.1.0-py3-none-any.whl.metadata (3.7 kB)
-Collecting click (from kopf->-r requirements.txt (line 1))
-  Using cached click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
-Collecting aiohttp (from kopf->-r requirements.txt (line 1))
-  Using cached aiohttp-3.13.2-py3-none-any.whl
-Collecting certifi>=14.05.14 (from kubernetes->-r requirements.txt (line 2))
-  Using cached certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
-Collecting six>=1.9.0 (from kubernetes->-r requirements.txt (line 2))
-  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
-Collecting python-dateutil>=2.5.3 (from kubernetes->-r requirements.txt (line 2))
-  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
-Collecting google-auth>=1.0.1 (from kubernetes->-r requirements.txt (line 2))
-  Using cached google_auth-2.43.0-py2.py3-none-any.whl.metadata (6.6 kB)
-Collecting websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 (from kubernetes->-r requirements.txt (line 2))
-  Using cached websocket_client-1.9.0-py3-none-any.whl.metadata (8.3 kB)
-Collecting requests (from kubernetes->-r requirements.txt (line 2))
-  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
-Collecting requests-oauthlib (from kubernetes->-r requirements.txt (line 2))
-  Using cached requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
-Collecting urllib3<2.4.0,>=1.24.2 (from kubernetes->-r requirements.txt (line 2))
-  Using cached urllib3-2.3.0-py3-none-any.whl.metadata (6.5 kB)
-Collecting durationpy>=0.7 (from kubernetes->-r requirements.txt (line 2))
-  Using cached durationpy-0.10-py3-none-any.whl.metadata (340 bytes)
-Collecting cachetools<7.0,>=2.0.0 (from google-auth>=1.0.1->kubernetes->-r requirements.txt (line 2))
-  Using cached cachetools-6.2.2-py3-none-any.whl.metadata (5.6 kB)
-Collecting pyasn1-modules>=0.2.1 (from google-auth>=1.0.1->kubernetes->-r requirements.txt (line 2))
-  Using cached pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
-Collecting rsa<5,>=3.1.4 (from google-auth>=1.0.1->kubernetes->-r requirements.txt (line 2))
-  Using cached rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
-Collecting pyasn1>=0.1.3 (from rsa<5,>=3.1.4->google-auth>=1.0.1->kubernetes->-r requirements.txt (line 2))
-  Using cached pyasn1-0.6.1-py3-none-any.whl.metadata (8.4 kB)
-Collecting aiohappyeyeballs>=2.5.0 (from aiohttp->kopf->-r requirements.txt (line 1))
-  Using cached aiohappyeyeballs-2.6.1-py3-none-any.whl.metadata (5.9 kB)
-Collecting aiosignal>=1.4.0 (from aiohttp->kopf->-r requirements.txt (line 1))
-  Using cached aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
-Collecting attrs>=17.3.0 (from aiohttp->kopf->-r requirements.txt (line 1))
-  Using cached attrs-25.4.0-py3-none-any.whl.metadata (10 kB)
-Collecting frozenlist>=1.1.1 (from aiohttp->kopf->-r requirements.txt (line 1))
-  Using cached frozenlist-1.8.0-py3-none-any.whl.metadata (20 kB)
-Collecting multidict<7.0,>=4.5 (from aiohttp->kopf->-r requirements.txt (line 1))
-  Using cached multidict-6.7.0-py3-none-any.whl.metadata (5.3 kB)
-Collecting propcache>=0.2.0 (from aiohttp->kopf->-r requirements.txt (line 1))
-  Using cached propcache-0.4.1-py3-none-any.whl.metadata (13 kB)
-Collecting yarl<2.0,>=1.17.0 (from aiohttp->kopf->-r requirements.txt (line 1))
-  Using cached yarl-1.22.0-py3-none-any.whl.metadata (75 kB)
-Collecting idna>=2.0 (from yarl<2.0,>=1.17.0->aiohttp->kopf->-r requirements.txt (line 1))
-  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
-Collecting typing-extensions>=4.2 (from aiosignal>=1.4.0->aiohttp->kopf->-r requirements.txt (line 1))
-  Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
-Collecting charset_normalizer<4,>=2 (from requests->kubernetes->-r requirements.txt (line 2))
-  Using cached charset_normalizer-3.4.4-py3-none-any.whl.metadata (37 kB)
-Collecting oauthlib>=3.0.0 (from requests-oauthlib->kubernetes->-r requirements.txt (line 2))
-  Using cached oauthlib-3.3.1-py3-none-any.whl.metadata (7.9 kB)
-Using cached kopf-1.38.0-py3-none-any.whl (209 kB)
-Using cached kubernetes-34.1.0-py2.py3-none-any.whl (2.0 MB)
-Using cached urllib3-2.3.0-py3-none-any.whl (128 kB)
-kopf
-kubernetes
-pyyaml
+# Cython debug symbols
+cython_debug/
 
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-"requirements.txt" 4L, 24B
-kopf
-Using cached certifi-2025.11.12-py3-none-any.whl (159 kB)
-Using cached durationpy-0.10-py3-none-any.whl (3.9 kB)
-Using cached google_auth-2.43.0-py2.py3-none-any.whl (223 kB)
-Using cached cachetools-6.2.2-py3-none-any.whl (11 kB)
-Using cached rsa-4.9.1-py3-none-any.whl (34 kB)
-kopf
-kube-ng
-pyyaml
+# PyCharm
+#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#  and can be added to the global gitignore or merged into this file.  For a more nuclear
+#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+#.idea/
 
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-"requirements.txt" 4L, 21B
-kopf
-Using cached pyasn1-0.6.1-py3-none-any.whl (83 kB)
-Using cached pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
-Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
-Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
-Using cached websocket_client-1.9.0-py3-none-any.whl (82 kB)
-Using cached multidict-6.7.0-py3-none-any.whl (12 kB)
-Using cached yarl-1.22.0-py3-none-any.whl (46 kB)
-Using cached aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
-Using cached aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
-Using cached attrs-25.4.0-py3-none-any.whl (67 kB)
-Using cached frozenlist-1.8.0-py3-none-any.whl (13 kB)
-Using cached idna-3.11-py3-none-any.whl (71 kB)
-Using cached propcache-0.4.1-py3-none-any.whl (13 kB)
-Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
-Using cached click-8.3.1-py3-none-any.whl (108 kB)
-Using cached iso8601-2.1.0-py3-none-any.whl (7.5 kB)
-Using cached python_json_logger-4.0.0-py3-none-any.whl (15 kB)
-Using cached requests-2.32.5-py3-none-any.whl (64 kB)
-Using cached charset_normalizer-3.4.4-py3-none-any.whl (53 kB)
-Using cached requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
-Using cached oauthlib-3.3.1-py3-none-any.whl (160 kB)
-Installing collected packages: durationpy, websocket-client, urllib3, typing-extensions, six, pyyaml, python-json-logger, pyasn1, propcache, oauthlib, multidict, iso8601, idna, frozenlist, click, charset_normalizer, certifi, cachetools, attrs, aiohappyeyeballs, yarl, rsa, requests, python-dateutil, pyasn1-modules, aiosignal, requests-oauthlib, google-auth, aiohttp, kubernetes, kopf
-Successfully installed aiohappyeyeballs-2.6.1 aiohttp-3.13.2 aiosignal-1.4.0 attrs-25.4.0 cachetools-6.2.2 certifi-2025.11.12 charset_normalizer-3.4.4 click-8.3.1 durationpy-0.10 frozenlist-1.8.0 google-auth-2.43.0 idna-3.11 iso8601-2.1.0 kopf-1.38.0 kubernetes-34.1.0 multidict-6.7.0 oauthlib-3.3.1 propcache-0.4.1 pyasn1-0.6.1 pyasn1-modules-0.4.2 python-dateutil-2.9.0.post0 python-json-logger-4.0.0 pyyaml-6.0.3 requests-2.32.5 requests-oauthlib-2.0.0 rsa-4.9.1 six-1.17.0 typing-extensions-4.15.0 urllib3-2.3.0 websocket-client-1.9.0 yarl-1.22.0
-(.venv) bbrietzke@alcmene django-operator % git status
-On branch walk-through
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-	requirements.txt
+### Python Patch ###
+# Poetry local configuration file - https://python-poetry.org/docs/configuration/#local-configuration
+poetry.toml
 
-nothing added to commit but untracked files present (use "git add" to track)
-(.venv) bbrietzke@alcmene django-operator % git add .
-(.venv) bbrietzke@alcmene django-operator % git commit -am "Adding requirements.txt"
-[walk-through 203b679] Adding requirements.txt
- 1 file changed, 4 insertions(+)
- create mode 100644 requirements.txt
-(.venv) bbrietzke@alcmene django-operator % more requirements.txt
-kopf
-kubernetes
-pyyaml
+# ruff
+.ruff_cache/
 
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[codz]
-*$py.class
+# LSP config files
+pyrightconfig.json
 
-# C extensions
-*.so
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+# Local History for Visual Studio Code
+.history/
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+# Built Visual Studio Code Extensions
+*.vsix
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py.cover
-".gitignore" 207L, 4688B
+# End of https://www.toptal.com/developers/gitignore/api/python,pycharm,visualstudiocode
